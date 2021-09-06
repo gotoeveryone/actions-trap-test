@@ -10,5 +10,5 @@ trap finally EXIT
 while :;
 do
   echo "Call sleep..."
-  sleep 1
+  sleep 5
 done
