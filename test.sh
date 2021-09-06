@@ -5,7 +5,7 @@ function finally() {
   echo "Call finally."
 }
 
-trap finally EXIT
+trap finally QUIT
 
 while :;
 do
