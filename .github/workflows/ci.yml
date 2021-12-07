@@ -8,7 +8,17 @@ jobs:
     # timeout-minutes: 1
     steps:
       - uses: actions/checkout@v1
+      - name: Set output
+        id: test
+        run: |
+          FAILURE_STATUS=""
+          echo "::set-output name=failure-status::$FAILURE_STATUS"
+          SERVICE_STATUS=""
+          echo "::set-output name=service-status::$SERVICE_STATUS"
       - name: Run shell
+        if: >
+          ${{ steps.test.outputs.service-status == 'INACTIVE' }} ||
+          ${{ steps.test.outputs.failure-status == 'MISSING' }}
         run: ./test.sh
 
   # after:
