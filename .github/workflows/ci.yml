@@ -11,14 +11,15 @@ jobs:
       - name: Set output
         id: test
         run: |
-          FAILURE_STATUS=""
+          FAILURE_STATUS="MISSING "
           echo "::set-output name=failure-status::$FAILURE_STATUS"
-          SERVICE_STATUS="ACTIVE"
+          SERVICE_STATUS=""
           echo "::set-output name=service-status::$SERVICE_STATUS"
       - name: Test
         if: ${{ steps.test.outputs.service-status == 'INACTIVE' || steps.test.outputs.failure-status == 'MISSING' }}
         run: |
-          echo "${{ steps.test.outputs }}"
+          echo "${{ steps.test.outputs.service-status }}"
+          echo "${{ steps.test.outputs.failure-status }}"
 
   # after:
   #   if: ${{ always() }}
