@@ -1,0 +1,14 @@
+name: No run
+
+on:
+  pull_request:
+    branches-ignore:
+      - "*"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Echo
+        run: echo "hoge"
