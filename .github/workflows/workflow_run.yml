@@ -11,7 +11,7 @@ on:
       - main
 
 jobs:
-  setup_deploy_params:
+  echo_branch:
     runs-on: ubuntu-latest
     steps:
       - name: if dev
